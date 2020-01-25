@@ -1,0 +1,11 @@
+<h3 class = "addTaskLabel">Add Task</h3>
+
+<form class="addTaskForm" action="#" method="POST">
+  <input [(ngModel)]="name" placeholder="Enter name" class="addProductInput"
+  type="text" name="name"/>
+
+   <input [(ngModel)]="price" placeholder="Enter price" class="addProductInput"
+  type="text" name="name"/>
+
+  <button type="button" (click) = "add()" class = "addTaskSubmitBtn">Submit</button>
+</form>

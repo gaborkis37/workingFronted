@@ -1,0 +1,14 @@
+<h3 class = "addTaskLabel">Add Task</h3>
+
+<form class="registrationForm" action="#" method="POST">
+  <input [(ngModel)]="username" placeholder="Enter username" class="registerInput"
+  type="text" name="name"/>
+
+   <input [(ngModel)]="email" placeholder="Enter email" class="registerInputInput"
+  type="text" name="name"/>
+
+  <input [(ngModel)]="password" placeholder="Enter password" class="registerInputInput"
+  type="text" name="name"/>
+
+  <button (click) = "register()" class = "registerBtn">Submit</button>
+</form>
