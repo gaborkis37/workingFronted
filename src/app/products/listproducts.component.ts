@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProdcuctService } from '../services/prodcuct.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listproducts',
@@ -10,10 +11,14 @@ export class ListproductsComponent {
 
   
 
-  constructor(public productService: ProdcuctService) { }
+  constructor(public productService: ProdcuctService, private router: Router) { }
 
   public deleteProduct(id) {
     this.productService.deleteProduct(id);
+  }
+
+  updateProduct(id: number){
+    this.router.navigate(['update', id]);
   }
 
 }

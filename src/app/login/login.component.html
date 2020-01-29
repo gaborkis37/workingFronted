@@ -23,7 +23,7 @@
 			[(ngModel)] = "userData.password"
 			#pass = "ngModel"
 			name = "name"
-      type = "text"
+      type = "password"
       (input) = "error = false"/>
 			
 		<div class = "error" *ngIf = "pass.touched && pass.errors != null">
@@ -39,7 +39,7 @@
 
 		<button class="submitBtn">Submit</button>
 		<br/>
-		<label>If you don't have an acoount, please register</label>
+		<label>If you don't have an account, please register</label>
 		<br/>
 		<a [routerLink]="['/registration']">Click here to register</a>
 </form>

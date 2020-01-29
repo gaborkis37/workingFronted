@@ -16,6 +16,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { RegistrationService } from './services/registration.service';
 import { TokenService } from './services/token.service';
 import { ProdcuctService } from './services/prodcuct.service';
+import { EditproductComponent } from './editproduct/editproduct.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -35,7 +36,8 @@ const appRoutes: Routes = [
     ListproductsComponent,
     AddproductComponent,
     RegisterComponent,
-    LogoutComponent
+    LogoutComponent,
+    EditproductComponent,
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
