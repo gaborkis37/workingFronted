@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { TokenService } from '../token.service';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserData } from '../userdata';
+import { TokenService } from '../services/token.service';
+import { UserData } from '../model/userdata';
+import { AuthenticationService } from '../services/authentication.service';
 
 
 @Component({
@@ -11,21 +12,14 @@ import { UserData } from '../userdata';
 })
 export class LoginComponent {
 
-  constructor(private tokenService: TokenService, private router: Router) { }
+  constructor(private tokenService: TokenService, private router: Router, private authService: AuthenticationService) { }
 
   userData: UserData = new UserData();
   error = false;
+  USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser';
 
   login() {
-    if (this.userData.username.length > 0 && this.userData.password.length > 0) {
-      this.tokenService.getToken(this.userData).subscribe(result => {
-        result.expires_in = new Date().getTime() + result.expires_in * 1000;
-
-        sessionStorage.setItem('jsessionid', JSON.stringify(result));
-
-        this.router.navigateByUrl('/home');
-      }, error => this.error = true);
-    }
+    this.authService.login(this.userData, this.error);
   }
 
 

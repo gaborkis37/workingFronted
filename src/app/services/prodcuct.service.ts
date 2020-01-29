@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Product } from './product';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Product } from '../model/product';
 
 @Injectable()
 export class ProdcuctService {
@@ -11,9 +11,9 @@ export class ProdcuctService {
   productList: Product[] = [];
   newProduct: Product;
 
-  constructor(private http: HttpClient) { this.load(); }
+  constructor(private http: HttpClient) { this.getProducts();}
 
-  load() {
+  getProducts() {
     const token = sessionStorage.getItem('jsessionid');
     const tokenJSON = JSON.parse(token);
 
@@ -42,8 +42,6 @@ export class ProdcuctService {
   }
 
   addProduct(name: string, price: string, token: string) {
-    this.newProduct = new Product(name, price);
-    this.productList.unshift(this.newProduct);
 
     const addProductUrl = 'http://localhost:8080/addProduct';
 
@@ -55,14 +53,31 @@ export class ProdcuctService {
     const addProductHeaders: HttpHeaders = new HttpHeaders()
       .append('Authorization', 'Bearer' + token);
 
-    this.http.post(addProductUrl, {
+    return this.http.post(addProductUrl, {
       withCredentials: true
     }, {
         headers: addProductHeaders,
         params: addProductParams
-      }).subscribe((res) => {
-        console.log(res);
+      }).subscribe((data: Product[]) => {
+        this.productList = data;
       });
 
+  }
+
+  public deleteProduct(id) {
+    const token = sessionStorage.getItem('jsessionid');
+    const tokenJSON = JSON.parse(token);
+
+    const deleteProductUrl = 'http://localhost:8080/deleteProduct/' + id;
+    const deleteProductHeaders: HttpHeaders = new HttpHeaders()
+    .append('Authorization', 'Bearer' + tokenJSON.access_token);
+
+    const options = {
+      headers: deleteProductHeaders,
+      withCredentials: true
+    };
+      
+
+    return this.http.delete(deleteProductUrl, options).subscribe((data: Product[]) => this.productList = data);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdcuctService } from '../prodcuct.service';
+import { ProdcuctService } from '../services/prodcuct.service';
 
 @Component({
   selector: 'app-listproducts',
@@ -8,9 +8,12 @@ import { ProdcuctService } from '../prodcuct.service';
 })
 export class ListproductsComponent {
 
-
+  
 
   constructor(public productService: ProdcuctService) { }
 
+  public deleteProduct(id) {
+    this.productService.deleteProduct(id);
+  }
 
 }

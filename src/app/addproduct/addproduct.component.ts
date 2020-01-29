@@ -1,5 +1,5 @@
-import { ProdcuctService } from '../prodcuct.service';
 import { Component } from '@angular/core';
+import { ProdcuctService } from '../services/prodcuct.service';
 
 @Component({
   selector: 'app-addproduct',
@@ -21,11 +21,5 @@ export class AddproductComponent {
     this.price = '';
   }
 
-  addAndLoad() {
-    this.productsService.addProduct(this.name, this.price, JSON.parse(sessionStorage.getItem('jsessionid')).access_token);
-    this.name = '';
-    this.price = '';
-    this.productsService.load();
-  }
 
 }

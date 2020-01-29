@@ -9,8 +9,10 @@
       </thead>
       <tbody>
         <tr *ngFor="let product of productService.productList">
+          <td style="display: none;">{{product.id}}</td>
           <td>{{ product.name }}</td>
           <td>{{ product.price }}</td>
+          <td class="text-center"><button class="btn btn-danger btn-xs" (click)="deleteProduct(product.id)"><span class="glyphicon glyphicon-remove"></span> Delete</button></td>
         </tr>
       </tbody>
     </table>

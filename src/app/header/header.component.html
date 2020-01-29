@@ -1,1 +1,8 @@
-<h1 class="title">Shopping List</h1>
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <h1>Shopping List</h1>
+        <ul class="logout-btn">
+                <a *ngIf="isLoggedIn" class="nav-link" href="/logout" (click) = "handleLogOut()" >Logout</a>
+        </ul>
+    </nav>
+  </header>

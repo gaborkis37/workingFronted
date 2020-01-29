@@ -7,6 +7,8 @@
 	border-left: .5em solid #f4f4f4; 
 }
 
-.title {
-	margin-top: 0px;
+
+.logout-btn {
+	float: right;
+	border: 1px solid #f4f4f4;
 }

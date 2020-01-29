@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpParams } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
-import { TokenData } from './tokendata';
-import { UserData } from './userdata';
+import { UserData } from '../model/userdata';
+import { TokenData } from '../model/tokendata';
 
 
 @Injectable()
