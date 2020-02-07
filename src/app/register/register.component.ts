@@ -19,7 +19,6 @@ export class RegisterComponent {
 
   register() {
 
-
     // tslint:disable-next-line: max-line-length
     this.registrationService.register(this.username, this.email, this.password);
     this.router.navigateByUrl('/home');

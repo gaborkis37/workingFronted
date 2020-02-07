@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -17,6 +17,7 @@ import { RegistrationService } from './services/registration.service';
 import { TokenService } from './services/token.service';
 import { ProdcuctService } from './services/prodcuct.service';
 import { EditproductComponent } from './editproduct/editproduct.component';
+import { HttpErrorInterceptor } from './services/HttpErrorInterceptor';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -47,7 +48,11 @@ const appRoutes: Routes = [
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [TokenService, ProdcuctService, RegistrationService],
+  providers: [TokenService, ProdcuctService, RegistrationService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttpErrorInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
