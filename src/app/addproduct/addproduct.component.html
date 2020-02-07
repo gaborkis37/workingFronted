@@ -1,11 +1,13 @@
 <h3 class = "addProductLabel">Add product</h3>
 
 <form class="addProductForm" action="#" method="POST">
-  <input [(ngModel)]="product.name" placeholder="Enter name" class="addProductInput"
+  <input required [(ngModel)]="product.name" #name="ngModel" placeholder="Enter name" class="addProductInput"
   type="text" name="name"/>
 
-   <input [(ngModel)]="product.price" placeholder="Enter price" class="addProductInput"
+   <input required [(ngModel)]="product.price" #price="ngModel" placeholder="Enter price" class="addProductInput"
   type="text" name="name"/>
+ 
+  
 
   <button type="button" (click) = "add()" class = "addProductSubmitBtn">Submit</button>
 </form>

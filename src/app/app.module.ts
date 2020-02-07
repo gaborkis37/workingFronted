@@ -40,7 +40,7 @@ const appRoutes: Routes = [
     EditproductComponent,
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {onSameUrlNavigation: "reload"}),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

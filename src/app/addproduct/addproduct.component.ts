@@ -18,6 +18,7 @@ export class AddproductComponent {
   add() {
     this.productsService.addProduct(this.product, JSON.parse(sessionStorage.getItem('jsessionid')).access_token);
     this.product = new Product();
+    window.location.reload();
   }
 
 

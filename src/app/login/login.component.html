@@ -11,10 +11,10 @@
       type = "text"
       (input) = "error = false"/>
 			
-		<div class = "error" *ngIf = "name.touched && name.errors != null">
-			<div *ngIf="name.errors['required']">
-				<label>ERROR: Required Field</label>
-			</div>
+	<div class = "error" *ngIf = "name.touched && name.errors != null">
+		<div *ngIf="name.errors['required']">
+			<label>ERROR: Required Field</label>
+		</div>
     </div>
     
      <input class = "input"
@@ -26,10 +26,10 @@
       type = "password"
       (input) = "error = false"/>
 			
-		<div class = "error" *ngIf = "pass.touched && pass.errors != null">
-			<div *ngIf="pass.errors['required']">
-				<label>ERROR: Required Field</label>
-			</div>
+	<div class = "error" *ngIf = "pass.touched && pass.errors != null">
+		<div *ngIf="pass.errors['required']">
+			<label>ERROR: Required Field</label>
+		</div>
     </div>
     
 

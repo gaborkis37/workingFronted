@@ -10,8 +10,13 @@ export class ProdcuctService {
 
   productList: Product[] = [];
   newProduct: Product;
+  totalPrice = 0;
 
-  constructor(private http: HttpClient) { this.getProducts();}
+
+  constructor(private http: HttpClient) { 
+    this.getProducts();
+    
+  }  
 
   getProducts() {
     const token = sessionStorage.getItem('jsessionid');
@@ -32,9 +37,13 @@ export class ProdcuctService {
             if (res[i] == null) {
               break;
             }
-
+            let product = res[i];
+            this.totalPrice += product.price;
             this.productList.push(res[i]);
+            
           }
+          
+          
         });
 
     }

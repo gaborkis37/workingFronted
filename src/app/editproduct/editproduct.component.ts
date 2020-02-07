@@ -30,7 +30,7 @@ export class EditproductComponent implements OnInit {
   updateProduct() {
     this.productService.updateProduct(this.id,this.product);
     this.product = new Product();
-    this.router.navigateByUrl('/home');
+    window.location.href="/home";
   }
 
 }
